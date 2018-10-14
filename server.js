@@ -3,7 +3,6 @@ require("dotenv").config();
 const express = require("express");
 const bodyParser = require("body-parser");
 const { parse } = require("url");
-const morgan = require("morgan");
 const next = require("next");
 
 const dev = process.env.NODE_ENV !== "production";
@@ -20,7 +19,7 @@ app.prepare().then(() => {
     server.use(bodyParser.json());
     server.use(bodyParser.urlencoded({ extended: false }));
 
-    if (process.env.NODE_ENV === "dev") server.use(morgan("dev"));
+    if (process.env.NODE_ENV === "dev") server.use(require("morgan")("dev"));
 
     // Be sure to pass `true` as the second argument to `url.parse`.
     // This tells it to parse the query portion of the URL.
