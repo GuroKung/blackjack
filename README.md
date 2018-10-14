@@ -1,5 +1,6 @@
 # Blackjack Application
 [![Build Status](https://travis-ci.org/GuroKung/blackjack.svg?branch=master)](https://travis-ci.org/GuroKung/blackjack)
+[![Coverage Status](https://coveralls.io/repos/github/GuroKung/blackjack/badge.svg?branch=master)](https://coveralls.io/github/GuroKung/blackjack?branch=master)
 
 ## Sample Application
 https://blackjack-sample-app.herokuapp.com
