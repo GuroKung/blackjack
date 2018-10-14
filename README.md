@@ -11,6 +11,11 @@ This program is using `Node.js`
 Please make sure you have `Node.js version 8` or higher  
 [Click here to see more details](https://nodejs.org/en/)
 
+This project requires Mongo DB setup
+
+## ENV Var
+- MONGO_URL : mongo db connection string
+
 
 ## Starting Guide
 On first use, run the follwing command
@@ -72,11 +77,6 @@ Example output
 
 ✨  Done in 0.71s.
 ```
-
-
-## ENV Var
-- MONGO_URL : mongo db connection string
-
 
 # API
 
