@@ -4,6 +4,7 @@
     "dev": "NODE_ENV=dev nodemon server.js -w server.js -w routes -w src -w models",
     "build": "next build",
     "start": "NODE_ENV=production node server.js",
+    "heroku-postbuild": "npm run build",
     "test:w": "NODE_ENV=test nodemon --exec mocha -R min",
     "test": "NODE_ENV=test mocha"
   },
