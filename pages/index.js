@@ -4,45 +4,43 @@ import Head from '../components/head'
 import Nav from '../components/nav'
 
 const Home = () => (
-  <div>
-    <Head title="Home" />
-    <Nav />
-
-    <div className="hero">
+  <div className="landing text-center">
+    <Head title="Blackjack" />
+    
+    <div className="card card-cover">
       <h1 className="title">Welcome to Blackjack Game</h1>
       <p className="description">
         To get started, enter username below and click <code>Start game</code>
       </p>
 
-      <div className="row">
-        <Link href="https://github.com/zeit/next.js#getting-started">
-          <a className="card">
-            <h3>Getting Started &rarr;</h3>
-            <p>Learn more about Next on Github and in their examples</p>
-          </a>
-        </Link>
-        <Link href="https://open.segment.com/create-next-app">
-          <a className="card">
-            <h3>Examples &rarr;</h3>
-            <p>
-              Find other example boilerplates on the{' '}
-              <code>create-next-app</code> site
-            </p>
-          </a>
-        </Link>
-        <Link href="https://github.com/segmentio/create-next-app">
-          <a className="card">
-            <h3>Create Next App &rarr;</h3>
-            <p>Was this tool helpful? Let us know how we can improve it</p>
-          </a>
-        </Link>
+      <div className="text-center">
+        <form className="form-signin">
+          <h1 className="h3 mb-3 font-weight-normal">Please Enter Username</h1>
+          <div className="mb-3">
+            <label for="inputUsername" className="sr-only">username</label>
+            <input type="text" id="inputUsername" className="form-control" placeholder="Enter Username" required="" autofocus=""></input>
+          </div>
+
+          <button className="btn btn-lg btn-success btn-block" type="submit">Start Game</button>
+          <p className="mt-5 mb-3 text-muted">© Gurokung</p>
+        </form>
       </div>
+
     </div>
 
     <style jsx>{`
-      .hero {
-        width: 100%;
-        color: #333;
+    .landing {
+      background: url(https://images.thebetwaygroup.com/umbraco/umbracobetway/media/6345757/blackjackhistory_image3.jpg) no-repeat center center fixed; 
+      -webkit-background-size: cover;
+      -moz-background-size: cover;
+      -o-background-size: cover;
+      background-size: cover;
+      height: -webkit-fill-available;
+      text-align: center
+    }
+      .card-cover {
+        width: 50%;
+        display: inline-block;
       }
       .title {
         margin: 0;
@@ -62,28 +60,12 @@ const Home = () => (
         flex-direction: row;
         justify-content: space-around;
       }
-      .card {
-        padding: 18px 18px 24px;
-        width: 220px;
-        text-align: left;
-        text-decoration: none;
-        color: #434343;
-        border: 1px solid #9b9b9b;
-      }
-      .card:hover {
-        border-color: #067df7;
-      }
-      .card h3 {
-        margin: 0;
-        color: #067df7;
-        font-size: 18px;
-      }
-      .card p {
-        margin: 0;
-        padding: 12px 0 0;
-        font-size: 13px;
-        color: #333;
-      }
+      .form-signin {
+        width: 100%;
+        max-width: 330px;
+        padding: 15px;
+        margin: auto;
+    }
     `}</style>
   </div>
 )
