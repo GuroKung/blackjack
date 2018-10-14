@@ -5,6 +5,11 @@ Screenshot
 <img src="https://preview.ibb.co/e9qfQf/Screen-Shot-2561-10-15-at-4-37-13-AM.png" width="100%">
 <img src="https://image.ibb.co/fpsS5f/Screen-Shot-2561-10-15-at-4-09-49-AM.png" width="100%">
 
+## Setup Guide
+This program is using `Node.js`
+Please make sure you have `Node.js` version 8 or higher
+[Click here to see more details](https://nodejs.org/en/)
+
 
 ## Starting Guide
 On first use, run the follwing command
