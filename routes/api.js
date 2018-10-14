@@ -89,12 +89,16 @@ api.post("/hit", async (req, res) => {
   currentGame.set("playerCard", currentGame.playerCard.concat(newCard));
 
   // end game
-
-  const secondsBetweenTwoDateMoreThan10 = Math.abs(
-    (new Date().getTime() - new Date(currentGame.updatedAt)) / 1000
-  );
   const playerScore = gameCtrl.calculateCardValue(currentGame.playerCard);
-  if (playerScore == 21) {
+  if (gameCtrl.isTooLate(currentGame.updatedAt)) {
+    await gameCtrl.addToLeaderBoard(username, "lose");
+    return res.send({
+      message: "too late",
+      status: "lose",
+      playerCard: currentGame.playerCard,
+      playerScore
+    });
+  } else if (playerScore == 21) {
     await gameCtrl.addToLeaderBoard(username, "win");
     return res.send({
       message: "blackjack",
@@ -105,14 +109,6 @@ api.post("/hit", async (req, res) => {
   } else if (playerScore > 21) {
     await gameCtrl.addToLeaderBoard(username, "lose");
     return res.send({
-      status: "lose",
-      playerCard: currentGame.playerCard,
-      playerScore
-    });
-  } else if (secondsBetweenTwoDateMoreThan10) {
-    await gameCtrl.addToLeaderBoard(username, "lose");
-    return res.send({
-      message: "too late",
       status: "lose",
       playerCard: currentGame.playerCard,
       playerScore
@@ -143,10 +139,7 @@ api.post("/stand", async (req, res) => {
   let playerScore = gameCtrl.calculateCardValue(currentGame.playerCard);
 
   // end game, too late
-  const secondsBetweenTwoDateMoreThan10 = Math.abs(
-    (new Date().getTime() - new Date(currentGame.updatedAt)) / 1000
-  );
-  if (secondsBetweenTwoDateMoreThan10) {
+  if (gameCtrl.isTooLate(currentGame.updatedAt)) {
     await gameCtrl.addToLeaderBoard(username, "lose");
     return res.send({
       message: "too late",

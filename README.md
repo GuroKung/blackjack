@@ -68,3 +68,81 @@ Example output
 
 ## ENV Var
 - MONGO_URL : mongo db connection string
+
+
+# API
+
+### POST /api/startgame
+body
+```
+{
+  username: "gurokung"
+}
+```
+Response
+```
+{
+   "playerCard":[
+      "6:Diamonds",
+      "King:Diamonds"
+   ],
+   "playerScore":16,
+   "playerName":"gurokung",
+   "dealerCard":[
+      "4:Spades",
+      "3:Diamonds"
+   ],
+   "dealerScore":7
+}
+```
+
+
+
+### POST /api/hit
+body
+```
+{
+  username: "gurokung"
+}
+```
+Response
+```
+{
+   "playerCard":[
+      "5:Diamonds",
+      "3:Hearts",
+      "King:Clubs"
+   ],
+   "playerScore":18
+}
+```
+
+### POST /api/stand
+body
+```
+{
+  username: "gurokung"
+}
+```
+Response
+```
+{
+   "playerCard":[
+      "6:Spades",
+      "4:Clubs",
+      "King:Spades"
+   ],
+   "playerScore":20,
+   "dealerCard":[
+      "6:Spades",
+      "4:Clubs",
+      "King:Spades",
+      "9:Clubs"
+   ],
+   "dealerScore":29,
+   "status":"win"
+}
+```
+
+### GET /api/leaderboard
+Response - List of all users stats

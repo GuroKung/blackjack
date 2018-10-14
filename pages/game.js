@@ -37,7 +37,6 @@ export default class Game extends Component {
       let { data } = await axios.post("/api/hit", {
         username: this.props.url.query.username
       });
-      console.log(data);
       this.setState(data);
     } catch (error) {
       console.error(error);
@@ -49,7 +48,6 @@ export default class Game extends Component {
       let { data } = await axios.post("/api/stand", {
         username: this.props.url.query.username
       });
-      console.log(data);
       this.setState(data);
     } catch (error) {
       console.error(error);
@@ -101,6 +99,8 @@ export default class Game extends Component {
 
       if (gameStatus === "win" && this.state.message === "blackjack")
         gameStatus = "BLACKJACK";
+      else if (gameStatus === "lose" && this.state.message === "too late")
+        gameStatus = "TOO LATE";
 
       return (
         <h1 className={textColor}>{`You are ${gameStatus.toUpperCase()}`}</h1>

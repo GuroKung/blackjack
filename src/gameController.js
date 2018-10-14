@@ -71,7 +71,7 @@ function addToLeaderBoard(username, status) {
   let leaderBoardObj = { $inc: {} };
   leaderBoardObj.$inc[status] = 1;
 
-  console.log('leaderBoardObj', leaderBoardObj)
+  console.log("leaderBoardObj", leaderBoardObj);
 
   return LeaderBoard.updateOne({ _id: username }, leaderBoardObj, {
     upsert: true,
@@ -86,3 +86,10 @@ function getAllLeaderBoard() {
 }
 
 exports.getAllLeaderBoard = getAllLeaderBoard;
+
+function isTooLate(datetime) {
+  // should response within 10 secs
+  return Math.abs((new Date().getTime() - new Date(datetime)) / 1000) > 10;
+}
+
+exports.isTooLate = isTooLate;
