@@ -1,12 +1,11 @@
 import React from 'react'
 import Link from 'next/link'
 import Head from '../components/head'
-import Nav from '../components/nav'
 
 const Home = () => (
   <div className="landing text-center">
     <Head title="Blackjack" />
-    
+
     <div className="card card-cover">
       <h1 className="title">Welcome to Blackjack Game</h1>
       <p className="description">
