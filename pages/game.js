@@ -20,10 +20,6 @@ export default class Game extends Component {
     this.fetchGame();
   }
 
-  componentDidUpdate() {
-    this.isTheGameEnd();
-  }
-
   async fetchGame() {
     try {
       let { data } = await axios.post("/api/startgame", {
@@ -59,12 +55,6 @@ export default class Game extends Component {
     }
   }
 
-  isTheGameEnd() {
-    if (this.state.status) {
-      alert(`You are ${this.state.status.toUpperCase()}`);
-    }
-  }
-
   showPlayButton() {
     if (!this.state.status)
       return (
@@ -83,6 +73,9 @@ export default class Game extends Component {
           </button>
         </div>
       );
+    else {
+        return <button>To Leader Board</button>
+    }
   }
 
   showGameStatus() {
@@ -123,8 +116,8 @@ export default class Game extends Component {
           <img
             src="https://d1nhio0ox7pgb.cloudfront.net/_img/o_collection_png/green_dark_grey/256x256/plain/user.png"
             alt=""
-            width="35px"
-            height="35px"
+            width="39px"
+            height="39px"
           />
           <h2>Player {this.state.playerName}</h2>
         </div>

@@ -54,6 +54,7 @@ api.post("/startgame", async (req, res) => {
   // end game
   const playerScore = gameCtrl.calculateCardValue(result.playerCard);
   if (playerScore == 21) {
+    await gameCtrl.addToLeaderBoard(username, "win");
     return res.send({
       message: "blackjack",
       status: "win",
@@ -90,6 +91,7 @@ api.post("/hit", async (req, res) => {
   // end game
   const playerScore = gameCtrl.calculateCardValue(currentGame.playerCard);
   if (playerScore == 21) {
+    await gameCtrl.addToLeaderBoard(username, "win");
     return res.send({
       message: "blackjack",
       status: "win",
@@ -97,6 +99,7 @@ api.post("/hit", async (req, res) => {
       playerScore
     });
   } else if (playerScore > 21) {
+    await gameCtrl.addToLeaderBoard(username, "lose");
     return res.send({
       status: "lose",
       playerCard: currentGame.playerCard,
@@ -136,17 +139,22 @@ api.post("/stand", async (req, res) => {
 
   await currentGame.save();
 
+  const gameStatus = gameCtrl.compareScore(playerScore, dealerScore);
+
+  await gameCtrl.addToLeaderBoard(username, gameStatus);
+
   return res.send({
     playerCard: currentGame.playerCard,
     playerScore,
     dealerCard: currentGame.dealerCard,
     dealerScore,
-    status: gameCtrl.compareScore(playerScore, dealerScore)
+    status: gameStatus
   });
 });
 
-api.get("/leaderboard", (req, res) => {
-  res.send([]);
+api.get("/leaderboard", async (req, res) => {
+  let result = await gameCtrl.getAllLeaderBoard();
+  res.send(result);
 });
 
 module.exports = api;
