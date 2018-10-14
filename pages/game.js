@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 import Card from "../components/card";
+import Link from "next/link";
 
 export default class Game extends Component {
   constructor(props) {
@@ -74,7 +75,13 @@ export default class Game extends Component {
         </div>
       );
     else {
-        return <button>To Leader Board</button>
+      return (
+        <Link href="/leaderboard">
+          <button className="btn btn-lg btn-primary m-2">
+            To Leader Board
+          </button>
+        </Link>
+      );
     }
   }
 
