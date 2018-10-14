@@ -1,6 +1,9 @@
 # Blackjack Application
 [![Build Status](https://travis-ci.org/GuroKung/blackjack.svg?branch=master)](https://travis-ci.org/GuroKung/blackjack)
 
+## Sample Application
+https://blackjack-sample-app.herokuapp.com
+
 Screenshot
 
 <img src="https://preview.ibb.co/e9qfQf/Screen-Shot-2561-10-15-at-4-37-13-AM.png" width="100%">
