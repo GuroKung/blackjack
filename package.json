@@ -1,0 +1,25 @@
+{
+  "name": "blackjack-app",
+  "scripts": {
+    "dev": "NODE_ENV=dev nodemon server.js -w server.js -w routes -w src -w models",
+    "build": "next build",
+    "start": "NODE_ENV=production node server.js",
+    "test:w": "NODE_ENV=test nodemon --exec mocha -R min",
+    "test": "NODE_ENV=test mocha"
+  },
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "dotenv": "^6.1.0",
+    "express": "^4.16.4",
+    "mongoose": "^5.3.2",
+    "next": "^7.0.1",
+    "react": "^16.5.2",
+    "react-dom": "^16.5.2"
+  },
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "mocha": "^5.2.0",
+    "morgan": "^1.9.1",
+    "nodemon": "^1.18.4"
+  }
+}
