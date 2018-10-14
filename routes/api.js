@@ -32,7 +32,6 @@ const api = express.Router();
 const gameCtrl = require("../src/gameController");
 
 const STATUS = {
-  SUCCESS: "success",
   FAIL: "fail"
 };
 
@@ -52,8 +51,18 @@ api.post("/startgame", async (req, res) => {
 
   const result = await gameCtrl.createNewGame(username);
 
+  // end game
+  const playerScore = gameCtrl.calculateCardValue(result.playerCard);
+  if (playerScore == 21) {
+    return res.send({
+      message: "blackjack",
+      status: "win",
+      playerCard: result.playerCard,
+      playerScore
+    });
+  }
+
   return res.send({
-    status: STATUS.SUCCESS,
     playerCard: result.playerCard,
     playerScore: gameCtrl.calculateCardValue(result.playerCard),
     playerName: result._id,
@@ -91,7 +100,7 @@ api.post("/hit", async (req, res) => {
     return res.send({
       status: "lose",
       playerCard: currentGame.playerCard,
-      playerScore,
+      playerScore
     });
   }
 
@@ -124,6 +133,8 @@ api.post("/stand", async (req, res) => {
     currentGame.set("dealerCard", currentGame.playerCard.concat(newCard));
     dealerScore = gameCtrl.calculateCardValue(currentGame.dealerCard);
   } while (dealerScore <= 16);
+
+  await currentGame.save();
 
   return res.send({
     playerCard: currentGame.playerCard,
