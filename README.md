@@ -1,8 +1,10 @@
 # Blackjack Application
-Screenshoot
+Screenshot
 
-![](https://preview.ibb.co/e9qfQf/Screen-Shot-2561-10-15-at-4-37-13-AM.png)  
-![](https://image.ibb.co/fpsS5f/Screen-Shot-2561-10-15-at-4-09-49-AM.png)
+
+<img src="https://preview.ibb.co/e9qfQf/Screen-Shot-2561-10-15-at-4-37-13-AM.png" width="100%">
+<img src="https://image.ibb.co/fpsS5f/Screen-Shot-2561-10-15-at-4-09-49-AM.png" width="100%">
+
 
 ## Starting Guide
 On first use, run the follwing command
