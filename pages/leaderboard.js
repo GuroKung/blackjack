@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
-import Card from "../components/card";
+import Link from "next/link";
 
 export default class LeaderBaord extends Component {
   constructor(props) {
@@ -18,7 +18,7 @@ export default class LeaderBaord extends Component {
   async fetchLeaderBoard() {
     try {
       let { data } = await axios.get("/api/leaderboard");
-      data = data.sort((a, b) => b.win-a.win);
+      data = data.sort((a, b) => b.win - a.win);
       this.setState({ list: data });
     } catch (error) {
       console.error(error);
@@ -58,6 +58,9 @@ export default class LeaderBaord extends Component {
         <div className="row h-100 justify-content-center align-items-center">
           <h1 className="display-2">LeaderBoard</h1>
           {this.generateLeaderboardList()}
+          <Link href="/">
+            <button className="btn btn-lg btn-primary m-2">Play Again</button>
+          </Link>
         </div>
       </div>
     );
