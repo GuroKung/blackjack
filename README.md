@@ -24,14 +24,14 @@ This project requires Mongo DB setup
 ## Starting Guide
 On first use, run the follwing command
 For yarn
-```
+```bash
 yarn install
 yarn run build
 yarn start
 ```
 
 For npm
-```
+```bash
 npm intall
 npm run build
 npm start
@@ -47,7 +47,7 @@ npm run dev
 
 ## Test
 For running test
-```
+```bash
 yarn test
 or
 npm test
@@ -86,13 +86,13 @@ Example output
 
 ### POST /api/startgame
 body
-```
+```json
 {
-  username: "gurokung"
+  "username": "gurokung"
 }
 ```
 Response
-```
+```json
 {
    "playerCard":[
       "6:Diamonds",
@@ -112,13 +112,13 @@ Response
 
 ### POST /api/hit
 body
-```
+```json
 {
-  username: "gurokung"
+  "username": "gurokung"
 }
 ```
 Response
-```
+```json
 {
    "playerCard":[
       "5:Diamonds",
@@ -131,13 +131,13 @@ Response
 
 ### POST /api/stand
 body
-```
+```json
 {
-  username: "gurokung"
+  "username": "gurokung"
 }
 ```
 Response
-```
+```json
 {
    "playerCard":[
       "6:Spades",
