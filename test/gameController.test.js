@@ -38,6 +38,42 @@ describe("gameCtrl", () => {
         ])
       ).to.equal(15);
     });
+
+    it("should calculate score 21 if ace come first", () => {
+      expect(
+        gameCtrl.calculateCardValue([
+          "Ace:Heart",
+          "Jack:Diamonds",
+          "King:Diamonds"
+        ])
+      ).to.equal(21);
+    });
+    it("should calculate score 21 if ace in the middle", () => {
+      expect(
+        gameCtrl.calculateCardValue([
+          "Jack:Heart",
+          "Ace:Diamonds",
+          "King:Diamonds"
+        ])
+      ).to.equal(21);
+    });
+
+    it("should calculate score for double ace", () => {
+      expect(
+        gameCtrl.calculateCardValue([
+          "Ace:Heart",
+          "Ace:Diamonds"
+        ])
+      ).to.equal(12);
+      expect(
+        gameCtrl.calculateCardValue([
+          "Ace:Heart",
+          "Ace:Diamonds",
+          "Ace:Heart",
+          "Ace:Diamonds"
+        ])
+      ).to.equal(14);
+    });
   });
 
   describe("compareScore", () => {

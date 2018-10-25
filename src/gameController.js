@@ -33,8 +33,18 @@ exports.getGameByUsername = getGameByUsername;
 function calculateCardValue(cardArray) {
   let value,
     totalScore = 0;
+
+  for (let i = 0; i < cardArray.length; i++) {
+    let aceCard;
+    let currentCard = cardArray[i].toString().split(":");
+    if (currentCard[0] == "Ace" && i < cardArray.length) {
+      aceCard = cardArray.splice(i, 1);
+      cardArray.push(aceCard);
+    }
+  }
+
   for (let card of cardArray) {
-    value = card.split(":")[0];
+    value = card.toString().split(":")[0];
 
     if (value == "Jack" || value == "Queen" || value == "King") {
       totalScore += 10;
